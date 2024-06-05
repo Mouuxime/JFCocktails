@@ -1,0 +1,17 @@
+---------------------------------------------------
+Here are the ownership and the certification details
+of the JFcocktail 1.0
+---------------------------------------------------
+
+app_name - JFcocktail
+app_alias - jfcocktail
+app_author_name - Ardox
+app_author_organizational - Ariax
+app_author_organization - Ariax
+app_author_locality - Ariax
+app_author_state - Yvelines
+app_author_country - France
+app_password - RUhbd8IHG14v
+app_versionName - "1.0"
+app_versionCode - 100
+
