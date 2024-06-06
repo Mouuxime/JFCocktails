@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- Important to make website responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JFCocktail</title>
+
+        <!-- Link our CSS file -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <!-- Navbar Section Starts Here -->
+        <section class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="#" title="Logo">
+                        <img src="images/JO.png"
+                            class="img-responsive"
+			    style="height: 60px; width: 60px;">
+		    </a>
+                </div>
+
+                <div class="menu text-right">
+                    <ul>
+                        <li>Par Ardox</li>
+                        <li><a href="#" onclick="toggleLogin()">Connexion</a></li>
+                        <li><a href="#" onclick="logout()">Déconnexion</a></li>
+                    </ul>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </section>
+        <!-- Navbar Section Ends Here -->
+
+        <div id="loginPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="toggleLogin()">&times;</span>
+                <h2>Connexion</h2>
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="Nom">
+                    <input type="password" id="password" placeholder="Mot de passe">
+                    <button type="button" onclick="submitLogin()">Connexion</button>
+                    <button type="button" onclick="submitRegister()">Inscription</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- fOOD MEnu Section Starts Here -->
+        <section class="food-menu">
+            <div id="nameHeader" class="nameHeader">
+                <h1 id="nameHeaderText" class="nameHeaderText"></h1>
+            </div>
+
+            <div class="container">
+
+                <div id="favCard" class="favCard">
+                </div>
+
+                <div id="recoCard" class="recoCard">
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/cocktail1.jpg"
+                            alt="Chicke Hawain Pizza"
+                            class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h4>Sunrise Splashs</h4>
+                        <p class="food-price"></p>
+                        <p class="food-detail">
+                            50% de jus
+                            d'orange, 25% de jus d'ananas, 25% de jus de
+                            cranberry
+                        </p>
+                        <br>
+
+                        <a href="#" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/cocktail2.jpg"
+                            alt="Chicke Hawain Pizza"
+                            class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h4>Tropical Breeze</h4>
+                        <p class="food-price"></p>
+                        <p class="food-detail">
+                            Même quantité
+                            de
+                            jus d'ananas, jus d'orange et de jus de
+                            pomme
+                        </p>
+                        <br>
+
+                        <a href="#" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/cocktail3.png"
+                            alt="Chicke Hawain Burger"
+                            class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h4>Apple Pine Delight</h4>
+                        <p class="food-price"></p>
+                        <p class="food-detail">
+                            25% de jus
+                            d'orange, 25% de jus d'ananas puis 50% de
+                            jus de
+                            pomme
+                        </p>
+                        <br>
+
+                        <a href="#" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/cocktail4.png"
+                            alt="Chicke Hawain Pizza"
+                            class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h4>cranberry Sunset</h4>
+                        <p class="food-price"></p>
+                        <p class="food-detail">
+                            25% de jus
+                            d'orange, 25% de jus d'ananas, 50% de jus de
+                            cranberry
+                        </p>
+                        <br>
+
+                        <a href="#" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/cocktail5.png"
+                            alt="Chicke Hawain Pizza"
+                            class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h4>Island Orchid</h4>
+                        <p class="food-price"></p>
+                        <p class="food-detail">
+                            Même quantité
+                            de
+                            jus d'ananas, jus de pomme et jus de
+                            cranberry
+                        </p>
+                        <br>
+
+                        <a href="#" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="images/cocktail6.png" alt="Chicke Hawain Momo"
+                            class="img-responsive img-curve">
+                    </div>
+
+                    <div class="food-menu-desc">
+                        <h4>Tropical CranApple</h4>
+                        <p class="food-price"></p>
+                        <p class="food-detail">
+                            Même quantité
+                            de
+                            jus de pomme, jus d'ananas et de jus de
+                            cranberry
+                        </p>
+                        <br>
+
+                        <a href="#" class="btn btn-primary">Commander</a>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </section>
+        <!-- fOOD Menu Section Ends Here -->
+        <script src="index.js"></script>
+    </body>
+</html>
