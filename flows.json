@@ -1,0 +1,1317 @@
+[
+    {
+        "id": "82d5a09061f7867a",
+        "type": "tab",
+        "label": "JF Cocktails (Principal)",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0caa44513af77368",
+        "type": "http in",
+        "z": "82d5a09061f7867a",
+        "name": "testing endpoint",
+        "url": "/endpoint-test",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1640,
+        "y": 600,
+        "wires": [
+            [
+                "1a2d0f73435969de",
+                "53e86eed0598258c"
+            ]
+        ]
+    },
+    {
+        "id": "1a2d0f73435969de",
+        "type": "delay",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1840,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "42f5c6f939a3cf2d",
+        "type": "complete",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "scope": [
+            "1a2d0f73435969de"
+        ],
+        "uncaught": false,
+        "x": 1640,
+        "y": 660,
+        "wires": [
+            [
+                "0aeff7ef0978d45d"
+            ]
+        ]
+    },
+    {
+        "id": "0aeff7ef0978d45d",
+        "type": "http response",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1830,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "53e86eed0598258c",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1840,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d8490b6075ce2445",
+        "type": "comment",
+        "z": "82d5a09061f7867a",
+        "name": "Tests et demos",
+        "info": "",
+        "x": 1640,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7c67a6eb6daf710e",
+        "type": "http in",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "url": "/endpoint",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 360,
+        "wires": [
+            [
+                "8b10e40fceeed1e4",
+                "eda6caf3842aeacb",
+                "66577c06bce27216"
+            ]
+        ]
+    },
+    {
+        "id": "8b10e40fceeed1e4",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "eda6caf3842aeacb",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 1",
+        "func": "msg.topic = `SELECT * FROM drinks WHERE nom='${msg.payload.cocktail}';`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 340,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "2c7caec64483bc26",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 2",
+        "func": "msg.topic = `SELECT * FROM users WHERE nom='${msg.payload.user}' AND password=${msg.payload.passwd};`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 680,
+        "wires": [
+            [
+                "33f4675a63dcbd58"
+            ]
+        ]
+    },
+    {
+        "id": "33f4675a63dcbd58",
+        "type": "mysql",
+        "z": "82d5a09061f7867a",
+        "mydb": "d51a0c940abc9e28",
+        "name": "",
+        "x": 540,
+        "y": 680,
+        "wires": [
+            [
+                "c5289c9c0823ae8c",
+                "933910c17c82823a"
+            ]
+        ]
+    },
+    {
+        "id": "a903357d7cc3404b",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 3",
+        "func": "msg.topic = `SELECT * FROM drinks WHERE nom='${msg.payload[0].favdrink}';`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 680,
+        "wires": [
+            [
+                "55f0174c5d8f560d"
+            ]
+        ]
+    },
+    {
+        "id": "55f0174c5d8f560d",
+        "type": "mysql",
+        "z": "82d5a09061f7867a",
+        "mydb": "d51a0c940abc9e28",
+        "name": "",
+        "x": 900,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee9b61147fbafce1",
+        "type": "http in",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "url": "/login-endpoint",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 680,
+        "wires": [
+            [
+                "2c7caec64483bc26",
+                "6bf76ac547a510b3"
+            ]
+        ]
+    },
+    {
+        "id": "1b550f9eea2ebbc3",
+        "type": "http response",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1090,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "c5289c9c0823ae8c",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "6bf76ac547a510b3",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "933910c17c82823a",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 8",
+        "func": "var customResponse;\nconst isgood = msg.payload[0]\n\nif (isgood !== undefined) {\n    const favdrink = msg.payload[0].favdrink;\n    customResponse = {\n        favdrink: favdrink,\n        data: 'success',\n        name: msg.payload[0].nom\n    };\n\n    msg.payload = customResponse;\n    return msg;\n\n} else {\n    customResponse = {\n        message: 'Failed to retrieve data',\n        data: 'error'\n    };\n\n    msg.payload = customResponse;\n    return msg;\n    \n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 740,
+        "wires": [
+            [
+                "1a9be60f9f81fd82"
+            ]
+        ]
+    },
+    {
+        "id": "1a9be60f9f81fd82",
+        "type": "json",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 880,
+        "y": 740,
+        "wires": [
+            [
+                "c752cf7a87a373f1",
+                "1b550f9eea2ebbc3"
+            ]
+        ]
+    },
+    {
+        "id": "c752cf7a87a373f1",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "e101fc1969b77364",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "1. Sunrise Splash   ",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM drinks WHERE ID = 1",
+        "x": 200,
+        "y": 100,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "0af63ac594837b29",
+        "type": "mysql",
+        "z": "82d5a09061f7867a",
+        "mydb": "d51a0c940abc9e28",
+        "name": "",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "0ee73f390a85c983",
+                "730dc57ba48b835c"
+            ]
+        ]
+    },
+    {
+        "id": "0ee73f390a85c983",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "Array",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8e5ed772de75d927",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "2. Tropical Breeze",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM drinks WHERE ID = 2",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "03ceaf229ab719e5",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "3. Apple Pine Delight",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM drinks WHERE ID = 3",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "ae2160ad362634c1",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "4. Cranberry Sunset",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM drinks WHERE ID = 4",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "b99b82b46cd61324",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "5. Island Orchard  ",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM drinks WHERE ID = 5",
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "58864c4fbd49554f",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "6.   Tropical Cran-Apple",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM drinks WHERE ID = 6",
+        "x": 200,
+        "y": 300,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "fbce9e46b66295cd",
+        "type": "modbus-write",
+        "z": "82d5a09061f7867a",
+        "name": "Reset All",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "17",
+        "quantity": "1",
+        "server": "1c1b01b5ac665b7a",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "5a5cc4094a56e801",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "Reset All",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 440,
+        "y": 340,
+        "wires": [
+            [
+                "fbce9e46b66295cd",
+                "1bbd5f6d38dc5d42"
+            ]
+        ]
+    },
+    {
+        "id": "e056e68432ee8f31",
+        "type": "ui_button",
+        "z": "82d5a09061f7867a",
+        "name": "1. Sunrise Splash",
+        "group": "64dc398fa757b5b6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Sunrise Splash",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM drinks WHERE ID = 1",
+        "topicType": "str",
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "379f7cfebde10c06",
+        "type": "ui_button",
+        "z": "82d5a09061f7867a",
+        "name": "2. Tropical Breeze",
+        "group": "64dc398fa757b5b6",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Tropical Breeze",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM drinks WHERE ID = 2",
+        "topicType": "str",
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "6b681119d36f2c3f",
+        "type": "ui_button",
+        "z": "82d5a09061f7867a",
+        "name": "3. Apple Pine Delight",
+        "group": "64dc398fa757b5b6",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Apple Pine Delight",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM drinks WHERE ID = 3",
+        "topicType": "str",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "3930f504d1992fc5",
+        "type": "ui_button",
+        "z": "82d5a09061f7867a",
+        "name": "4. Cranberry Sunset",
+        "group": "64dc398fa757b5b6",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Cranberry Sunset",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM drinks WHERE ID = 4",
+        "topicType": "str",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "73311a88bcfaf1f5",
+        "type": "ui_button",
+        "z": "82d5a09061f7867a",
+        "name": "5. Island Orchard  ",
+        "group": "64dc398fa757b5b6",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Island Orchard",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM drinks WHERE ID = 5",
+        "topicType": "str",
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "5735d5e49cf7af20",
+        "type": "ui_button",
+        "z": "82d5a09061f7867a",
+        "name": "6.   Tropical Cran-Apple",
+        "group": "64dc398fa757b5b6",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Tropical Cran-Apple",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "SELECT * FROM drinks WHERE ID = 6",
+        "topicType": "str",
+        "x": 200,
+        "y": 300,
+        "wires": [
+            [
+                "0af63ac594837b29"
+            ]
+        ]
+    },
+    {
+        "id": "730dc57ba48b835c",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "ID",
+        "func": "msg.payload = msg.payload[0].id\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 200,
+        "wires": [
+            [
+                "0bc714dc8da5e165",
+                "1bbd5f6d38dc5d42"
+            ]
+        ]
+    },
+    {
+        "id": "0bc714dc8da5e165",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "ID",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "1bbd5f6d38dc5d42",
+        "type": "modbus-write",
+        "z": "82d5a09061f7867a",
+        "name": "Write ID",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "16",
+        "quantity": "1",
+        "server": "1c1b01b5ac665b7a",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 660,
+        "y": 220,
+        "wires": [
+            [
+                "f4a82fcabd0618d7"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "f4a82fcabd0618d7",
+        "type": "delay",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 800,
+        "y": 240,
+        "wires": [
+            [
+                "d2103a783d78c61b"
+            ]
+        ]
+    },
+    {
+        "id": "a2adb1a41ceffe69",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "Reset 16",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "1bbd5f6d38dc5d42"
+            ]
+        ]
+    },
+    {
+        "id": "2b784faff4c77efa",
+        "type": "inject",
+        "z": "82d5a09061f7867a",
+        "name": "Init",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "23",
+        "payloadType": "num",
+        "x": 430,
+        "y": 260,
+        "wires": [
+            [
+                "1bbd5f6d38dc5d42"
+            ]
+        ]
+    },
+    {
+        "id": "efa9ed0595c0947c",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 9",
+        "func": "msg.topic = `INSERT INTO users (nom, password, favdrink) VALUES ('${msg.payload.user}','${msg.payload.passwd}', '');`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 840,
+        "wires": [
+            [
+                "a24fcdfa3f52bffe"
+            ]
+        ]
+    },
+    {
+        "id": "a24fcdfa3f52bffe",
+        "type": "mysql",
+        "z": "82d5a09061f7867a",
+        "mydb": "d51a0c940abc9e28",
+        "name": "",
+        "x": 540,
+        "y": 840,
+        "wires": [
+            [
+                "492aabd398be1782"
+            ]
+        ]
+    },
+    {
+        "id": "795a85d33f6105ac",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 10",
+        "func": "msg.topic = `SELECT * FROM drinks WHERE nom='${msg.payload[0].favdrink}';`\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 840,
+        "wires": [
+            [
+                "feb06daa225e85e5"
+            ]
+        ]
+    },
+    {
+        "id": "feb06daa225e85e5",
+        "type": "mysql",
+        "z": "82d5a09061f7867a",
+        "mydb": "d51a0c940abc9e28",
+        "name": "",
+        "x": 900,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76c09ec796c81cda",
+        "type": "http in",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "url": "/register-endpoint",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 840,
+        "wires": [
+            [
+                "efa9ed0595c0947c",
+                "37785620e7e80f97"
+            ]
+        ]
+    },
+    {
+        "id": "02077b9d78fa6d12",
+        "type": "http response",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "statusCode": "200",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 1090,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "492aabd398be1782",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "37785620e7e80f97",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "21e71667e84d9805",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "function 11",
+        "func": "var customResponse;\nconst isgood = msg.payload[0]\n\nif (isgood !== undefined) {\n    const favdrink = msg.payload[0].favdrink;\n    customResponse = {\n        favdrink: favdrink,\n        data: 'success',\n        name: msg.payload[0].nom\n    };\n\n    msg.payload = customResponse;\n    return msg;\n\n} else {\n    customResponse = {\n        message: 'Failed to retrieve data',\n        data: 'error'\n    };\n\n    msg.payload = customResponse;\n    return msg;\n    \n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 900,
+        "wires": [
+            [
+                "1de3d3dc30ee36ad"
+            ]
+        ]
+    },
+    {
+        "id": "1de3d3dc30ee36ad",
+        "type": "json",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 880,
+        "y": 900,
+        "wires": [
+            [
+                "6708c1c5715c08ae",
+                "02077b9d78fa6d12"
+            ]
+        ]
+    },
+    {
+        "id": "6708c1c5715c08ae",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "debug 16",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "d2103a783d78c61b",
+        "type": "function",
+        "z": "82d5a09061f7867a",
+        "name": "Reset fin",
+        "func": "msg.payload = 0\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 320,
+        "wires": [
+            [
+                "8a4d3ff66b2885d3",
+                "6a2ade61317df57e"
+            ]
+        ]
+    },
+    {
+        "id": "8a4d3ff66b2885d3",
+        "type": "debug",
+        "z": "82d5a09061f7867a",
+        "name": "Reset fin",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6a2ade61317df57e",
+        "type": "modbus-write",
+        "z": "82d5a09061f7867a",
+        "name": "Write 0 (Reset fin)",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "16",
+        "quantity": "1",
+        "server": "1c1b01b5ac665b7a",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 850,
+        "y": 320,
+        "wires": [
+            [
+                "2ff1e0d89ecfd81b"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2ff1e0d89ecfd81b",
+        "type": "delay",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 280,
+        "wires": [
+            [
+                "77ba5b76b8519bf8"
+            ]
+        ]
+    },
+    {
+        "id": "77ba5b76b8519bf8",
+        "type": "modbus-getter",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "16",
+        "quantity": "1",
+        "server": "2c96a01059d058ce",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "x": 1100,
+        "y": 320,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8516b1cfbdbf9d81",
+        "type": "http response",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "statusCode": "",
+        "headers": {
+            "content-type": "application/json"
+        },
+        "x": 410,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "66577c06bce27216",
+        "type": "delay",
+        "z": "82d5a09061f7867a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "25",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 260,
+        "y": 420,
+        "wires": [
+            [
+                "8516b1cfbdbf9d81"
+            ]
+        ]
+    },
+    {
+        "id": "d51a0c940abc9e28",
+        "type": "MySQLdatabase",
+        "name": "JFCocktails",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "jfcocktails",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "1c1b01b5ac665b7a",
+        "type": "modbus-client",
+        "name": "ZELIO (192.168.1.25)",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "192.168.1.25",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "64dc398fa757b5b6",
+        "type": "ui_group",
+        "name": "Requêtes",
+        "tab": "605e74afc326f71f",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2c96a01059d058ce",
+        "type": "modbus-client",
+        "name": "Test SIN",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "192.168.1.99",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "605e74afc326f71f",
+        "type": "ui_tab",
+        "name": "Jf Coktails",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

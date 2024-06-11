@@ -1,0 +1,3 @@
+[submodule "jfcocktails-mobile"]
+	path = jfcocktails-mobile
+	url = https://github.com/levraiardox/jfcocktail
